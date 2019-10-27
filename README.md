@@ -34,7 +34,7 @@ Breaks:
 
 ### FAQ
 
-1. If you have another version of Node.js installed on your system, then I recommend installing [NVM](https://github.com/creationix/nvm) (for Mac & Linux) or [NVM-Windows](https://github.com/coreybutler/nvm-windows). Both tools support the installation of multiple versions of Node.js and provide tools for easily switching between those versions. Using these tools, installing Node.js version 10 without losing your older version should be possible.
+[A Short FAQ for Setting up the React Application with Create React App](https://www.t4d.io/react-course-setup-faq.html)
 
 ## Links
 
