@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const CarTool = () => {
+export const CarTool = ({ cars, headerText }) => {
 
   return <>
     <header>
-      <h1>Car Tool</h1>
+      <h1>{headerText}</h1>
     </header>
 
     <table>
