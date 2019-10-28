@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { carsPropType } from '../propTypes/carsPropTypes';
 
 export const CarTool = ({ cars, headerText }) => {
 
@@ -6,7 +9,6 @@ export const CarTool = ({ cars, headerText }) => {
     <header>
       <h1>{headerText}</h1>
     </header>
-
     <table>
       <thead>
         <tr>
@@ -31,4 +33,11 @@ export const CarTool = ({ cars, headerText }) => {
     </table>
   </>;
 
+};
+
+
+
+CarTool.propTypes = {
+  headerText: PropTypes.string.isRequired,
+  cars: carsPropType,
 };

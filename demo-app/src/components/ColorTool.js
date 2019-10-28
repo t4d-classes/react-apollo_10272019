@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const ColorTool = ({ colors }) => {
+export const ColorTool = ({ colors, headerText }) => {
 
   return <>
     <header>
-      <h1>Color Tool</h1>
+      <h1>{headerText}</h1>
     </header>
     <ul>
       {colors.map(
@@ -13,4 +14,12 @@ export const ColorTool = ({ colors }) => {
     </ul>
   </>;
 
+};
+
+ColorTool.defaultProps = {
+  headerText: 'Color Tool',
+};
+
+ColorTool.propTypes = {
+  colors: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
