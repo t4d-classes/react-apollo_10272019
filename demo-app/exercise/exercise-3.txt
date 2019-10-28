@@ -1,0 +1,9 @@
+Exercise 3
+
+1. Create an array of two cars objects using the car data from the hard coded table. Define the array within the Car Tool component.
+
+Note: Do NOT create an array of arrays and do not create 6 arrays (one for each field)
+
+2. Update the car table to be dynamically created from the array of cars.
+
+3. Ensure it works with no errors in the console.

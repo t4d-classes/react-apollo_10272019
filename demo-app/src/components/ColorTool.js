@@ -2,17 +2,16 @@ import React from 'react';
 
 export const ColorTool = () => {
 
+  const colors = [ 'black', 'blue', 'orange', 'white', 'green', 'red' ];
+
   return <>
     <header>
       <h1>Color Tool</h1>
     </header>
     <ul>
-      <li>black</li>
-      <li>blue</li>
-      <li>orange</li>
-      <li>white</li>
-      <li>green</li>
-      <li>red</li>
+      {colors.map(
+        (color, index) => <li key={index}>{color}</li>
+      )}
     </ul>
   </>;
 
