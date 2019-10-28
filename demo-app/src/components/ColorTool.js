@@ -1,8 +1,6 @@
 import React from 'react';
 
-export const ColorTool = () => {
-
-  const colors = [ 'black', 'blue', 'orange', 'white', 'green', 'red' ];
+export const ColorTool = ({ colors }) => {
 
   return <>
     <header>
