@@ -1,27 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { ColorForm } from './ColorForm';
+
 export const ColorTool = ({ colors: initialColors, headerText }) => {
 
   const [ colors, setColors ] = useState(initialColors);
 
-  const [ colorForm, setColorForm ] = useState({
-    color: '',
-    hexcode: 0,
-  });
-
-  const change = (e) => {
-    // setColorForm({
-    //   ...colorForm,
-    //   [ e.target.name ]: e.target.type === 'number'
-    //     ? Number(e.target.value)
-    //     : e.target.value,
-    // });
+  const appendColor = (color) => {
+    setColors(colors.concat(color));
   };
-
-  const appendColor = () => {
-    // setColors(colors.concat(colorForm.color));
-  }
 
   return <>
     <header>
@@ -32,19 +20,7 @@ export const ColorTool = ({ colors: initialColors, headerText }) => {
         (color, index) => <li key={index}>{color}</li>
       )}
     </ul>
-    <form>
-      <div>
-        <label htmlFor="color-input">Color:</label>
-        <input type="text" id="color-input" name="color"
-          value={colorForm.color} onChange={change}  />
-      </div>
-      <div>
-        <label htmlFor="hexcode-input">HexCode:</label>
-        <input type="number" id="hexcode-input" name="hexcode"
-          value={colorForm.hexcode} onChange={change}  />
-      </div>
-      <button type="button" onClick={appendColor}>Add Color</button>
-    </form>
+    <ColorForm buttonText="Add Color" onSubmitColor={appendColor} />
   </>;
 
 };
