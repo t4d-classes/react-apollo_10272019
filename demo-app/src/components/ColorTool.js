@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export const ColorTool = ({ colors, headerText }) => {
+export const ColorTool = ({ colors: initialColors, headerText }) => {
+
+  const [ colors, setColors ] = useState(initialColors);
 
   const [ colorForm, setColorForm ] = useState({
     color: '',
@@ -17,7 +19,9 @@ export const ColorTool = ({ colors, headerText }) => {
     });
   };
 
-  console.log('color tool rendered', colorForm);
+  const appendColor = () => {
+    setColors(colors.concat(colorForm.color));
+  }
 
   return <>
     <header>
@@ -39,6 +43,7 @@ export const ColorTool = ({ colors, headerText }) => {
         <input type="number" id="hexcode-input" name="hexcode"
           value={colorForm.hexcode} onChange={change}  />
       </div>
+      <button type="button" onClick={appendColor}>Add Color</button>
     </form>
   </>;
 
