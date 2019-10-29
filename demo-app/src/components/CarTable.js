@@ -1,0 +1,27 @@
+import React from 'react';
+
+import { CarViewRow } from './CarViewRow';
+
+import { carsPropType } from '../propTypes/carsPropTypes';
+
+export const CarTable = ({ cars }) => {
+  return <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Color</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {cars.map(car => <CarViewRow key={car.id} car={car} />)}
+    </tbody>
+  </table>;
+}
+
+CarTable.propTypes = {
+  cars: carsPropType,
+};
