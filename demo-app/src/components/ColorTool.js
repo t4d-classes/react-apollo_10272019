@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const ColorTool = ({ colors, headerText }) => {
+
+  const [ colorForm, setColorForm ] = useState({
+    color: '',
+    hexcode: 0,
+  });
+
+  const change = (e) => {
+    setColorForm({
+      ...colorForm,
+      [ e.target.name ]: e.target.type === 'number'
+        ? Number(e.target.value)
+        : e.target.value,
+    });
+  };
+
+  console.log('color tool rendered', colorForm);
 
   return <>
     <header>
@@ -12,6 +28,18 @@ export const ColorTool = ({ colors, headerText }) => {
         (color, index) => <li key={index}>{color}</li>
       )}
     </ul>
+    <form>
+      <div>
+        <label htmlFor="color-input">Color:</label>
+        <input type="text" id="color-input" name="color"
+          value={colorForm.color} onChange={change}  />
+      </div>
+      <div>
+        <label htmlFor="hexcode-input">HexCode:</label>
+        <input type="number" id="hexcode-input" name="hexcode"
+          value={colorForm.hexcode} onChange={change}  />
+      </div>
+    </form>
   </>;
 
 };
