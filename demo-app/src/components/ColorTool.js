@@ -11,16 +11,16 @@ export const ColorTool = ({ colors: initialColors, headerText }) => {
   });
 
   const change = (e) => {
-    setColorForm({
-      ...colorForm,
-      [ e.target.name ]: e.target.type === 'number'
-        ? Number(e.target.value)
-        : e.target.value,
-    });
+    // setColorForm({
+    //   ...colorForm,
+    //   [ e.target.name ]: e.target.type === 'number'
+    //     ? Number(e.target.value)
+    //     : e.target.value,
+    // });
   };
 
   const appendColor = () => {
-    setColors(colors.concat(colorForm.color));
+    // setColors(colors.concat(colorForm.color));
   }
 
   return <>
