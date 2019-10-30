@@ -5,13 +5,16 @@ export const AdditionalControlsDemo = () => {
 
   const colorOptions = [ 'red', 'green', 'blue', 'purple', 'orange' ];
 
-  const [ selectedColors, setSelectedColors ] = useState([]);
+  const [ selectedColors, setSelectedColors ] = useState(['red','blue']);
   const [ featured, setFeatured ] = useState(false);
   const [ customerType, setCustomerType ] = useState('consumer');
 
   const change = (e) => {
 
     if (e.target.tagName === 'SELECT' && e.target.multiple) {
+
+      // console.dir(e.target.options instanceof Array);
+
       setSelectedColors(
         Array
           .from(e.target.options)
@@ -35,7 +38,8 @@ export const AdditionalControlsDemo = () => {
     <h2>Multiple Select List Box Example</h2>
     <div>
       <label htmlFor="colors-select">Select Colors:</label>
-      <select id="colors-select" onChange={change} size={5} multiple>
+      <select id="colors-select" onChange={change} size={5}
+        multiple value={selectedColors}>
         {colorOptions.map(colorOption =>
           <option key={colorOption}>{colorOption}</option>)}
       </select>

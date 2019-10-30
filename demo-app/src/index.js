@@ -14,9 +14,9 @@ const carList = [
 
 ReactDOM.render(
   <>
-    <ColorTool colors={colorList} />
-    <CarTool cars={carList} headerText="Cool Cars, Inc." />
-    {/* <AdditionalControlsDemo /> */}
+    {/* <ColorTool colors={colorList} />
+    <CarTool cars={carList} headerText="Cool Cars, Inc." /> */}
+    <AdditionalControlsDemo />
   </>,
   document.querySelector('#root'),
 );
