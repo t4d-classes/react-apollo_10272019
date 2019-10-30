@@ -1,10 +1,10 @@
-import React, { useState }from 'react';
+import React, { useState, useCallback, useEffect, useRef }from 'react';
 import PropTypes from 'prop-types';
 
 import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
-import { AltCarEditRow } from './AltCarEditRow';
+// import { AltCarEditRow } from './AltCarEditRow';
 
 import { carsPropType } from '../propTypes/carsPropTypes';
 
@@ -12,14 +12,23 @@ export const CarTool = ({ cars: initialCars, headerText }) => {
 
   const [ cars, setCars ] = useState(initialCars.concat());
   const [ editCarId, setEditCarId ] = useState(-1);
+  const defaultFormControl = useRef();
 
-  const appendCar = car => {
+  useEffect(() => {
+
+    if (defaultFormControl.current) {
+      defaultFormControl.current.focus();
+    }
+
+  }, []);  
+
+  const appendCar = useCallback(car => {
     setCars(cars.concat({
       ...car,
       id: Math.max(...cars.map(c => c.id), 0) + 1,
     }));
     setEditCarId(-1);
-  }
+  }, [ cars ]);
 
   const deleteCar = carId => {
     setCars(cars.filter(c => c.id !== carId));
@@ -39,20 +48,15 @@ export const CarTool = ({ cars: initialCars, headerText }) => {
 
   const cancelCar = () => setEditCarId(-1);
 
-  console.log(cars);
-
   return <>
     <ToolHeader headerText={headerText} />
     <CarTable cars={cars} editCarId={editCarId}
       onEditCar={setEditCarId} onDeleteCar={deleteCar}
       onSaveCar={saveCar} onCancelCar={cancelCar}
-      CarEditFormRow={AltCarEditRow}
        />
-    <CarTable cars={cars} editCarId={editCarId}
-      onEditCar={setEditCarId} onDeleteCar={deleteCar}
-      onSaveCar={saveCar} onCancelCar={cancelCar}
-       />
-    <CarForm onSubmitCar={appendCar} />
+    <CarForm onSubmitCar={appendCar}
+      buttonText="Add Car"
+      ref={defaultFormControl} />
   </>;
 
 };

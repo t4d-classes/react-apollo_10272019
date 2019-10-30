@@ -14,7 +14,7 @@ export const CarViewRow = ({
     <td>{car.model}</td>
     <td>{car.year}</td>
     <td>{car.color}</td>
-    <td>{car.price}</td>
+    <td>${car.price}</td>
     <td>
       <button type="button" onClick={() => editCar(car.id)}>Edit</button>
       <button type="button" onClick={() => deleteCar(car.id)}>Delete</button>
@@ -27,3 +27,4 @@ CarViewRow.propTypes = {
   onEditCar: PropTypes.func.isRequired,
   onDeleteCar: PropTypes.func.isRequired,
 };
+
