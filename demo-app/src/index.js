@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { ColorTool } from './components/ColorTool';
 import { CarTool } from './components/CarTool';
+import { AdditionalControlsDemo } from './components/AdditionalControlsDemo';
 
 const colorList = [ 'black', 'blue', 'orange', 'white', 'green', 'red' ];
 
@@ -15,6 +16,7 @@ ReactDOM.render(
   <>
     <ColorTool colors={colorList} />
     <CarTool cars={carList} headerText="Cool Cars, Inc." />
+    {/* <AdditionalControlsDemo /> */}
   </>,
   document.querySelector('#root'),
 );

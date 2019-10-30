@@ -9,7 +9,8 @@ import { carsPropType } from '../propTypes/carsPropTypes';
 
 export const CarTool = ({ cars: initialCars, headerText }) => {
 
-  const [ cars, setCars ] = useState(initialCars  .concat());
+  const [ cars, setCars ] = useState(initialCars.concat());
+  const [ editCarId, setEditCarId ] = useState(-1);
 
   const appendCar = car => {
     setCars(cars.concat({
@@ -27,7 +28,9 @@ export const CarTool = ({ cars: initialCars, headerText }) => {
 
   return <>
     <ToolHeader headerText={headerText} />
-    <CarTable cars={cars} onDeleteCar={deleteCar} />
+    <CarTable cars={cars} editCarId={editCarId}
+      onEditCar={setEditCarId} onDeleteCar={deleteCar}
+      onSaveCar={() => null} onCancelCar={() => null} />
     <CarForm onSubmitCar={appendCar} />
   </>;
 
