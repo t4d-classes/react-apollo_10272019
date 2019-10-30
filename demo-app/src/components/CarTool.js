@@ -46,7 +46,7 @@ export const CarTool = ({ cars: initialCars, headerText }) => {
     <CarTable cars={cars} editCarId={editCarId}
       onEditCar={setEditCarId} onDeleteCar={deleteCar}
       onSaveCar={saveCar} onCancelCar={cancelCar}
-      CarEditFormRow={AltCarEditRow} />
+       />
     <CarForm onSubmitCar={appendCar} />
   </>;
 
