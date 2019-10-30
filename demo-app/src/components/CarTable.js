@@ -12,6 +12,7 @@ export const CarTable = ({
   onDeleteCar: deleteCar,
   onSaveCar: saveCar,
   onCancelCar: cancelCar,
+  CarEditFormRow,
 }) => {
 
   return <table>
@@ -29,28 +30,19 @@ export const CarTable = ({
     <tbody>
       {cars.map(car =>
         editCarId === car.id
-          ? <CarEditRow key={car.id} car={car}
+          ? <CarEditFormRow key={car.id} car={car}
               onSaveCar={saveCar} onCancelCar={cancelCar} />
           : <CarViewRow key={car.id} car={car}
               onEditCar={editCar} onDeleteCar={deleteCar} />)}
     </tbody>
   </table>;
 
-  // return <div>
-  //   <h1>Hello World</h1>
-  //   <span>hi</span>
-  // </div>;
-
-  // return React.createElement('div', null,
-  //   React.createElement('h1', null, 'Hello World'),
-  //   React.createElement('span', null, 'h1'),
-  // );
-
 };
 
 CarTable.defaultProps = {
   cars: [],
   editCarId: -1,
+  CarEditFormRow: CarEditRow,
 };
 
 CarTable.propTypes = {

@@ -14,6 +14,8 @@ export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
     price: car.price,
   });
 
+  console.log('carForm state', carForm);
+
   const saveCar = () => {
     onSaveCar({
       ...carForm,
