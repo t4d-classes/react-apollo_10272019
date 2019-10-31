@@ -22,11 +22,8 @@ describe('<ToolHeader /> Enzyme Mock DOM', () => {
   let componentDOMNode;
 
   beforeEach(() => {
-
     component = mount(<ToolHeader headerText="The Tool" />);
-    
     componentDOMNode = component.find('h1');
-  
   });
 
   test('<ToolHeader /> renders', () => {
@@ -37,20 +34,16 @@ describe('<ToolHeader /> Enzyme Mock DOM', () => {
 
 describe('<ToolHeader /> Shallow with Enzyme', () => {
 
-  let wrapper;
+  let component;
+  let componentDOMNode;
 
   beforeEach(() => {
-
-    wrapper = shallow(<ToolHeader headerText="The Tool" />);
-
+    component = shallow(<ToolHeader headerText="The Tool" />);
+    componentDOMNode = component.find('h1');
   });
 
   test('<ToolHeader /> renders', () => {
-
-    const h1Content = wrapper.find('h1').text();
-
-    expect(h1Content).toBe('The Tool');
-  
+    expect(componentDOMNode.text()).toBe('The Tool');
   });
 
 });

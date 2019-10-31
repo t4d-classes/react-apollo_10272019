@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { useForm } from '../hooks/useForm';
 import { carPropType } from '../propTypes/carsPropTypes';
 
-export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
+export const CarEditRow = forwardRef(
+  ({ car, onSaveCar, onCancelCar: cancelCar }, ref) => {
+
+
+  useEffect(() => {
+
+    console.log('componentDidMount');
+
+    return () => {
+      console.log('componentWillUnmount');
+    };
+
+  }, []);
 
   const [ carForm, change, _, setIfBlank ] = useForm({
     make: car.make,
@@ -13,8 +25,6 @@ export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
     color: car.color,
     price: car.price,
   });
-
-  console.log('carForm state', carForm);
 
   const saveCar = () => {
     onSaveCar({
@@ -25,7 +35,7 @@ export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
 
   return <tr>
     <td>{car.id}</td>
-    <td><input type="text" name="make"
+    <td><input type="text" name="make" ref={ref}
       value={carForm.make} onChange={change} /></td>
     <td><input type="text" name="model"
       value={carForm.model} onChange={change} /></td>
@@ -43,7 +53,7 @@ export const CarEditRow = ({ car, onSaveCar, onCancelCar: cancelCar }) => {
     </td>
   </tr>;
 
-};
+});
 
 CarEditRow.propTypes = {
   car: carPropType,

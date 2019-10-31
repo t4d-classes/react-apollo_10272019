@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { CarViewRow } from './CarViewRow';
@@ -6,14 +6,14 @@ import { CarEditRow } from './CarEditRow';
 
 import { carsPropType } from '../propTypes/carsPropTypes';
 
-export const CarTable = ({
+export const CarTable = forwardRef( ({
   cars, editCarId,
   onEditCar: editCar,
   onDeleteCar: deleteCar,
   onSaveCar: saveCar,
   onCancelCar: cancelCar,
   CarEditFormRow,
-}) => {
+}, ref) => {
 
   return <table>
     <thead>
@@ -30,14 +30,14 @@ export const CarTable = ({
     <tbody>
       {cars.map(car =>
         editCarId === car.id
-          ? <CarEditFormRow key={car.id} car={car}
+          ? <CarEditFormRow key={car.id} car={car} ref={ref}
               onSaveCar={saveCar} onCancelCar={cancelCar} />
           : <CarViewRow key={car.id} car={car}
               onEditCar={editCar} onDeleteCar={deleteCar} />)}
     </tbody>
   </table>;
 
-};
+});
 
 CarTable.defaultProps = {
   cars: [],

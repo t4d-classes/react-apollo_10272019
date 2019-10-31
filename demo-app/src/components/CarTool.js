@@ -13,14 +13,39 @@ export const CarTool = ({ cars: initialCars, headerText }) => {
   const [ cars, setCars ] = useState(initialCars.concat());
   const [ editCarId, setEditCarId ] = useState(-1);
   const defaultFormControl = useRef();
+  const defaultEditFormControl = useRef();
+
+  // useEffect(() => {
+
+  //   if (defaultFormControl.current) {
+  //     defaultFormControl.current.focus();
+  //   }
+
+  // }, []);  
 
   useEffect(() => {
 
-    if (defaultFormControl.current) {
-      defaultFormControl.current.focus();
+    const currentEditCarId = editCarId;
+
+    if (currentEditCarId > 0) {
+      if (defaultEditFormControl.current) {
+        defaultEditFormControl.current.focus();
+      }
+    } else {
+      if (defaultFormControl.current) {
+        defaultFormControl.current.focus();
+      }
     }
 
-  }, []);  
+    console.log('editCarId effect start', currentEditCarId);
+
+    return () => {
+      console.log('editCarId effect end', currentEditCarId);
+    };
+
+
+  }, [editCarId]);  
+
 
   const appendCar = useCallback(car => {
     setCars(cars.concat({
@@ -53,6 +78,7 @@ export const CarTool = ({ cars: initialCars, headerText }) => {
     <CarTable cars={cars} editCarId={editCarId}
       onEditCar={setEditCarId} onDeleteCar={deleteCar}
       onSaveCar={saveCar} onCancelCar={cancelCar}
+      ref={defaultEditFormControl}
        />
     <CarForm onSubmitCar={appendCar}
       buttonText="Add Car"
