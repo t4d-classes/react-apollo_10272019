@@ -2,6 +2,7 @@ export const typeDefs = `
   type Query {
     message: String
     colors: [Color]
+    color(colorId: ID): Color
   }
 
   type Color {

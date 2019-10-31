@@ -1,0 +1,5 @@
+Exercise 3
+
+1. Add an endpoint to the Cars GraphQL server to be able to query cars based upon their year value.
+
+2. With a GraphQL query and execute it in the GraphQL playground demonstrating the new endpoint.
